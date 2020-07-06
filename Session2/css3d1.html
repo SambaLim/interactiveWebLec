@@ -12,27 +12,50 @@
       width: 60vw;
       height: 60vh;
       background: yellow;
-      /* perspective: 500px; */
+      perspective: 500px;
     }
     .card {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
       margin: 1em;
       width: 100px;
       height: 150px;
+      transform: rotateY(0deg);
+      transition: 1s;
+      transform-style: preserve-3d;
+      transform-origin: left;
+    }
+    .card-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
       border-radius: 0.5em;
       font-size: 1.5rem;
+      backface-visibility: hidden;
+    }
+    .card-side-front {
+      z-index: 1;
+      background: white;
+    }
+    .card-side-back {
+      transform: rotateY(180deg);
       background: red;
-      transform: perspective(500px) rotateY(45deg);
+    }
+    .world:hover .card{
+      transform: rotateY(-180deg)
     }
   </style>
 </head>
 <body>
   <div class="world">
-    <div class="card">CARD</div>
-    <div class="card">CARD</div>
-    <div class="card">CARD</div>
+    <div class="card">
+      <div class="card-side card-side-front">F</div>
+      <div class="card-side card-side-back">B</div>
+    </div>
   </div>  
 </body>
 </html>
