@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 35vh;
+      padding: 30px 20px;
+      border-radius: 10px;
+      background: rgb(223, 219, 219);
+    }
+    .menu-btn {
+      display: flex;
+      background: yellow;
+      border: 1px solid white;
+      align-items: center;
+      border-radius: 10px;
+      margin: 0 20px;
+      padding: 20px;
+    }
+    .icon {
+      width: 40px;
+      height: 50px;
+      /* pointer-events: none; */
+    }
+    .btn-label {
+      padding: 0 5px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      /* pointer-events: none; */
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <button class="menu-btn" data-value="1">
+      <img src="./images/ilbuni_1.png" alt="일분이1" class="icon">
+      <span class="btn-label">일분이 1</span>
+    </button>
+    <button class="menu-btn" data-value="2">
+      <img src="./images/ilbuni_2.png" alt="일분이2" class="icon">
+      <span class="btn-label">일분이 2</span>
+    </button>
+    <button class="menu-btn" data-value="3">
+      <img src="./images/ilbuni_3.png" alt="일분이3" class="icon">
+      <span class="btn-label">일분이 3</span>
+    </button>
+  </div>
+  <script>
+    const menu = document.querySelector('.menu');
+
+    const clickHandler = function(event) {
+      let elem = event.target;
+      while(!elem.classList.contains('menu-btn')) {
+        elem = elem.parentNode;
+        if(elem.nodeName == 'BODY') {
+          elem = null;
+          return;
+        }
+      }
+
+      console.log(elem.dataset.value)
+    }
+
+    menu.addEventListener('click', clickHandler);
+
+  </script>
+</body>
+</html>
