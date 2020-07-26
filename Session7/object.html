@@ -22,14 +22,23 @@
     // }
 
     const person = {
-      name: '일분이',
+      nickname: '일분이',
       age: 10,
       introduce: function() {
-        console.log(`안녕하세요? 저는 ${this.name}이고 나이는 10살이에요.`);
+        console.log(`안녕하세요? 저는 ${this.nickname}이고 나이는 ${this.age}살이에요.`);
+      }
+    }
+
+    const person2 = {
+      nickname: '이분이',
+      age: 8,
+      introduce: function() {
+        console.log(`안녕하세요? 저는 ${this.nickname}이고 나이는 ${this.age}살이에요.`);
       }
     }
 
     person.introduce();
+    person2.introduce();
   </script>
 </body>
 </html>
