@@ -45,8 +45,22 @@
   <script>
     (function() {
       const outputElem = document.querySelector('.output');
+      const ilbuniElem = document.querySelector('.ilbuni');
+
+      const showValue = function() {
+        let positionY = ilbuniElem.getBoundingClientRect().top;
+        outputElem.innerHTML = positionY;
+
+        if(positionY < window.innerHeight * 0.2) {
+          ilbuniElem.classList.add('zoom');
+        } else {
+          ilbuniElem.classList.remove('zoom');
+        }
+
+      }
+
       window.addEventListener('scroll', function() {
-        outputElem.innerHTML = window.pageYOffset;
+        showValue();
       });
 
     })();
