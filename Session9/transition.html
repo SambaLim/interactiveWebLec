@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Transition/Animation Event</title>
   <style>
+    @keyframes ball-ani {
+      from {
+        transform: translate(0, 0);
+      }
+      to {
+        transform: translate(200px, 200px);
+      }
+    }
+
     .ball {
       position: absolute;
       left: 0;
@@ -14,9 +23,11 @@
       border-radius: 50%;
       background: red;
       transition: 1s;
+      /* animation: ball-ani 1s 3 alternate forwards; */
     }
     .ball.end {
-      background: dodgerblue;
+      /* background: dodgerblue; */
+      border: 5px solid dodgerblue;
     }
   </style>
 </head>
@@ -35,10 +46,26 @@
     //   console.log(e.propertyName);
     // });
 
-    ballElem.addEventListener('transitionstart', function(e) {
+    // ballElem.addEventListener('transitionstart', function(e) {
+    //   ballElem.classList.add('end');
+    //   console.log(e.elapsedTime);
+    //   console.log(e.propertyName);
+    // });
+
+    // ballElem.addEventListener('animationstart', function() {
+    //   ballElem.classList.add('end');
+    // });
+
+    ballElem.addEventListener('animationend', function() {
       ballElem.classList.add('end');
-      console.log(e.elapsedTime);
-      console.log(e.propertyName);
+    });
+
+    ballElem.addEventListener('animationiteration', function() {
+      console.log('반복');
+    });
+
+    ballElem.addEventListener('click', function() {
+      ballElem.style.animation = `ball-ani 1s 3 alternate forwards`;
     });
   </script>
 </body>
